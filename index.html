@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝑾Á𝑹𝑺𝑯 - 2026 Free Fire Hassasiyet Paneli</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-deep: #05050a;
+            --primary-red: #ff1e42;
+            --primary-purple: #9d4edd;
+            --primary-turq: #00f2fe;
+            --glass-bg: rgba(18, 18, 30, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f0f0f5;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Mesh Background Effects */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0c0816 0%, #05050a 100%);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: floatBlob 12s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--primary-red);
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -15%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--primary-purple);
+            animation-delay: -4s;
+        }
+
+        .blob-3 {
+            top: 30%;
+            left: 30%;
+            width: 40vw;
+            height: 40vw;
+            background: var(--primary-turq);
+            animation-delay: -8s;
+            opacity: 0.25;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -40px) scale(1.1); }
+            100% { transform: translate(-20px, 30px) scale(0.95); }
+        }
+
+        /* Cyberpunk Grid Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-purple), var(--primary-turq));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(157, 78, 221, 0.4);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .section-title i {
+            color: var(--primary-turq);
+        }
+
+        /* Form Controls */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media(max-width: 650px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        select, input {
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary-turq);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+        }
+
+        /* Calculate Button */
+        .btn-calculate {
+            width: 100%;
+            margin-top: 25px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-purple));
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 10px 25px rgba(255, 30, 66, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(255, 30, 66, 0.5);
+        }
+
+        .btn-calculate:active {
+            transform: translateY(0);
+        }
+
+        /* Results Panel */
+        .results-container {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media(max-width: 700px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-turq), var(--primary-purple));
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Extra Config Info */
+        .meta-box {
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .meta-info span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .meta-info strong {
+            font-size: 1rem;
+            color: var(--primary-turq);
+        }
+
+        .btn-copy {
+            background: rgba(0, 242, 254, 0.15);
+            border: 1px solid var(--primary-turq);
+            color: var(--primary-turq);
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-copy:hover {
+            background: var(--primary-turq);
+            color: #05050a;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 40px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="mesh-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1 class="logo-title">𝑾Á𝑹𝑺𝑯</h1>
+            <p class="subtitle">2026 Free Fire Meta Sensitivity & DPI Engine</p>
+        </header>
+
+        <!-- Input Card -->
+        <div class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-sliders"></i> Cihaz ve Donanım Parametreleri
+            </div>
+            
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="deviceBrand">Cihaz Markası / Modeli</label>
+                    <select id="deviceBrand">
+                        <option value="iphone">iPhone (iOS 19/20 Meta)</option>
+                        <option value="samsung">Samsung Galaxy (One UI 8)</option>
+                        <option value="xiaomi">Xiaomi / Redmi / POCO</option>
+                        <option value="realme">Realme & Oppo</option>
+                        <option value="other">Diğer Android Cihazlar</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="dpiValue">Ekran DPI Değeri</label>
+                    <input type="number" id="dpiValue" value="480" min="320" max="960" placeholder="Örn: 480, 540, 600">
+                </div>
+            </div>
+
+            <button class="btn-calculate" onclick="calculateSensitivity()">
+                <i class="fa-solid fa-bolt"></i> 2026 Meta Hassasiyet Hesapla
+            </button>
+        </div>
+
+        <!-- Results Card -->
+        <div class="glass-card results-container" id="resultsCard">
+            <div class="section-title">
+                <i class="fa-solid fa-crosshairs"></i> Optimize Edilmiş 𝑾Á𝑹𝑺𝑯 Değerleri
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Genel (General)</div>
+                    <div class="stat-value" id="resGeneral">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Kırmızı Nokta (Red Dot)</div>
+                    <div class="stat-value" id="resRedDot">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">2x / 4x Dürbün (Scope)</div>
+                    <div class="stat-value" id="resScope">0</div>
+                </div>
+            </div>
+
+            <div class="meta-box">
+                <div class="meta-info">
+                    <span>Önerilen 2026 Stabilizasyon Kodu</span>
+                    <strong id="metaCodeText">WARSH-2026-X480-OPT</strong>
+                </div>
+                <button class="btn-copy" onclick="copyConfigCode()">
+                    <i class="fa-regular fa-copy"></i> Kodu Kopyala
+                </button>
+            </div>
+        </div>
+
+        <footer>
+            𝑾Á𝑹𝑺𝑯 System &copy; 2026 | All Rights Reserved
+        </footer>
+    </div>
+
+    <script>
+        function calculateSensitivity() {
+            const brand = document.getElementById('deviceBrand').value;
+            let dpi = parseInt(document.getElementById('dpiValue').value);
+
+            if (isNaN(dpi) || dpi < 300) dpi = 480;
+
+            let baseGeneral = 90;
+            let baseRedDot = 88;
+            let baseScope = 85;
+
+            // Brand & DPI calculation logic for 2026 meta
+            if (brand === 'iphone') {
+                baseGeneral = Math.round(96 - (dpi / 120));
+                baseRedDot = Math.round(94 - (dpi / 130));
+                baseScope = Math.round(92 - (dpi / 140));
+            } else if (brand === 'samsung') {
+                baseGeneral = Math.round(98 - (dpi / 110));
+                baseRedDot = Math.round(95 - (dpi / 120));
+                baseScope = Math.round(90 - (dpi / 130));
+            } else if (brand === 'xiaomi') {
+                baseGeneral = Math.round(100 - (dpi / 100));
+                baseRedDot = Math.round(97 - (dpi / 110));
+                baseScope = Math.round(93 - (dpi / 120));
+            } else {
+                baseGeneral = Math.round(95 - (dpi / 115));
+                baseRedDot = Math.round(92 - (dpi / 125));
+                baseScope = Math.round(88 - (dpi / 135));
+            }
+
+            // Boundary clamping (Free Fire scale 0-100)
+            let general = Math.min(100, Math.max(75, baseGeneral));
+            let redDot = Math.min(100, Math.max(70, baseRedDot));
+            let scope = Math.min(100, Math.max(65, baseScope));
+
+            // Display results with animation feel
+            document.getElementById('resGeneral').innerText = general;
+            document.getElementById('resRedDot').innerText = redDot;
+            document.getElementById('resScope').innerText = scope;
+
+            const configCode = `WARSH-${brand.toUpperCase()}-DPI${dpi}-G${general}-R${redDot}-S${scope}`;
+            document.getElementById('metaCodeText').innerText = configCode;
+
+            const resultsCard = document.getElementById('resultsCard');
+            resultsCard.style.display = 'block';
+            resultsCard.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyConfigCode() {
+            const codeText = document.getElementById('metaCodeText').innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Kopyalandı!';
+                btn.style.background = 'var(--primary-turq)';
+                btn.style.color = '#05050a';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-regular fa-copy"></i> Kodu Kopyala';
+                    btn.style.background = 'rgba(0, 242, 254, 0.15)';
+                    btn.style.color = 'var(--primary-turq)';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
