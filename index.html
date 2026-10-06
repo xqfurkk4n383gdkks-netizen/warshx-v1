@@ -2,7 +2,8 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#050505">
 <title>𝑾Á𝑹𝑺𝑯 — Free Fire Sensitivity</title>
 
 <style>
@@ -13,11 +14,13 @@
 }
 
 :root{
-    --red:#ff1738;
-    --red2:#ff0033;
-    --dark:#030303;
-    --card:rgba(12,12,14,.78);
-    --border:rgba(255,23,56,.28);
+    --red:#ff173d;
+    --red2:#ff003c;
+    --dark:#020203;
+    --panel:rgba(10,10,13,.72);
+    --border:rgba(255,23,61,.22);
+    --text:#fff;
+    --muted:#7e7e86;
 }
 
 html{
@@ -26,172 +29,198 @@ html{
 
 body{
     min-height:100vh;
+    background:#020203;
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
-    background:#020202;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
 }
 
-/* =========================
-   NEON NETWORK BACKGROUND
-========================= */
+button,
+select,
+input{
+    font:inherit;
+}
 
-.network{
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+#network{
     position:fixed;
-    inset:0;
-    z-index:-3;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 50% 40%,
-        rgba(255,0,45,.08),
-        transparent 35%),
-        #020202;
-}
-
-.network canvas{
-    position:absolute;
     inset:0;
     width:100%;
     height:100%;
+    z-index:-5;
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,0,50,.07),
+            transparent 38%
+        ),
+        #020203;
 }
 
-.red-glow{
-    position:absolute;
-    width:500px;
-    height:500px;
+.bg-light{
+    position:fixed;
+    width:420px;
+    height:420px;
     border-radius:50%;
-    background:rgba(255,0,40,.09);
-    filter:blur(100px);
-    animation:glowMove 9s ease-in-out infinite alternate;
+    filter:blur(120px);
+    background:rgba(255,0,45,.08);
+    pointer-events:none;
+    z-index:-4;
+    animation:floatLight 12s ease-in-out infinite alternate;
 }
 
-.red-glow.one{
-    top:-180px;
+.bg-light.one{
+    top:-200px;
     left:-180px;
 }
 
-.red-glow.two{
-    right:-220px;
-    bottom:-200px;
-    animation-delay:2s;
+.bg-light.two{
+    right:-200px;
+    bottom:-220px;
+    animation-delay:3s;
 }
 
-@keyframes glowMove{
-    from{transform:translate(0,0) scale(1)}
-    to{transform:translate(100px,50px) scale(1.25)}
+@keyframes floatLight{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(130px,90px) scale(1.25);
+    }
 }
 
-/* =========================
-   TOP BAR
-========================= */
+/* =====================================================
+   NAVBAR
+===================================================== */
 
-.topbar{
+.nav{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    height:68px;
-    z-index:50;
+    height:72px;
+    z-index:100;
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 6%;
-    background:rgba(2,2,2,.55);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(255,255,255,.05);
+    background:rgba(2,2,3,.58);
+    border-bottom:1px solid rgba(255,255,255,.045);
+    backdrop-filter:blur(20px);
 }
 
 .logo{
     font-size:25px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.status{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:11px;
-    color:#aaa;
+    font-weight:950;
     letter-spacing:1px;
 }
 
-.status-dot{
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.live{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:9px;
+    color:#8c8c93;
+    letter-spacing:1.8px;
+}
+
+.live-dot{
     width:7px;
     height:7px;
     border-radius:50%;
-    background:#ff1637;
-    box-shadow:0 0 12px #ff1637;
-    animation:pulse 1.5s infinite;
+    background:var(--red);
+    box-shadow:0 0 15px var(--red);
+    animation:livePulse 1.5s infinite;
 }
 
-@keyframes pulse{
-    50%{opacity:.35;transform:scale(.7)}
+@keyframes livePulse{
+    50%{
+        opacity:.25;
+        transform:scale(.65);
+    }
 }
 
-/* =========================
+.music-mini{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    border:1px solid rgba(255,23,61,.3);
+    background:rgba(255,0,50,.05);
+    color:#fff;
+    cursor:pointer;
+}
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
     min-height:100vh;
+    padding:120px 20px 80px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:110px 20px 70px;
-    position:relative;
 }
 
 .hero-content{
-    width:min(900px,100%);
-    animation:heroIn 1.2s ease both;
+    width:min(1000px,100%);
+    animation:heroEnter 1.1s ease both;
 }
 
-@keyframes heroIn{
+@keyframes heroEnter{
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(35px) scale(.98);
     }
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:none;
     }
 }
 
-.tag{
+.eyebrow{
     display:inline-flex;
     align-items:center;
-    gap:9px;
-    padding:9px 15px;
-    border:1px solid rgba(255,23,56,.25);
+    gap:10px;
+    padding:9px 16px;
+    border:1px solid rgba(255,23,61,.25);
     border-radius:100px;
-    background:rgba(255,0,40,.05);
-    color:#ff6b7f;
-    font-size:11px;
-    letter-spacing:2px;
-    margin-bottom:25px;
+    background:rgba(255,0,50,.035);
+    color:#ff7186;
+    font-size:10px;
+    letter-spacing:2.5px;
 }
 
 .hero h1{
-    font-size:clamp(70px,15vw,150px);
-    line-height:.85;
-    letter-spacing:-7px;
-    font-weight:900;
+    margin-top:28px;
+    font-size:clamp(75px,16vw,165px);
+    line-height:.82;
+    letter-spacing:-8px;
+    font-weight:950;
     text-shadow:
-        0 0 25px rgba(255,0,40,.18),
-        0 0 70px rgba(255,0,40,.08);
+        0 0 35px rgba(255,0,50,.16),
+        0 0 100px rgba(255,0,50,.08);
 }
 
 .hero h1 span{
-    color:#ff1738;
+    color:var(--red);
 }
 
-.hero-sub{
+.hero-desc{
+    max-width:590px;
     margin:30px auto 0;
-    max-width:560px;
-    color:#8d8d8d;
-    line-height:1.7;
+    color:#7d7d85;
+    line-height:1.8;
     font-size:14px;
 }
 
@@ -199,318 +228,655 @@ body{
     margin-top:38px;
     display:flex;
     justify-content:center;
-    gap:12px;
     flex-wrap:wrap;
+    gap:12px;
 }
 
 .btn{
+    min-height:52px;
+    padding:0 25px;
+    border-radius:11px;
     border:0;
-    cursor:pointer;
     color:white;
-    font-weight:800;
-    letter-spacing:1px;
-    border-radius:10px;
-    padding:16px 27px;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1.3px;
     transition:.25s;
 }
 
-.btn-main{
-    background:linear-gradient(135deg,#ff1738,#c90027);
-    box-shadow:0 0 30px rgba(255,0,40,.22);
+.btn-red{
+    background:linear-gradient(
+        135deg,
+        #ff1741,
+        #b8002c
+    );
+    box-shadow:0 0 35px rgba(255,0,50,.2);
 }
 
-.btn-main:hover{
+.btn-red:hover{
     transform:translateY(-3px);
-    box-shadow:0 0 45px rgba(255,0,40,.42);
+    box-shadow:0 0 50px rgba(255,0,50,.42);
 }
 
 .btn-dark{
-    background:rgba(255,255,255,.04);
+    background:rgba(255,255,255,.035);
     border:1px solid rgba(255,255,255,.08);
 }
 
 .btn-dark:hover{
-    border-color:rgba(255,23,56,.45);
+    border-color:rgba(255,23,61,.4);
 }
 
-/* =========================
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+    padding:70px 0;
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-head small{
+    color:var(--red);
+    letter-spacing:3px;
+    font-size:9px;
+}
+
+.section-head h2{
+    margin-top:10px;
+    font-size:34px;
+}
+
+.section-head p{
+    margin:10px auto 0;
+    max-width:560px;
+    color:#676770;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* =====================================================
    GENERATOR
-========================= */
+===================================================== */
 
 .generator{
-    width:min(1050px,92%);
-    margin:0 auto 100px;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.section-title small{
-    color:#ff3652;
-    letter-spacing:3px;
-    font-size:10px;
-}
-
-.section-title h2{
-    margin-top:10px;
-    font-size:35px;
-}
-
-.generator-card{
     padding:30px;
-    background:rgba(8,8,10,.82);
+    border-radius:25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,17,21,.8),
+            rgba(5,5,7,.78)
+        );
     border:1px solid var(--border);
-    border-radius:22px;
     box-shadow:
-        0 20px 80px rgba(0,0,0,.5),
-        inset 0 0 50px rgba(255,0,40,.025);
-    backdrop-filter:blur(18px);
+        0 30px 100px rgba(0,0,0,.5),
+        inset 0 0 80px rgba(255,0,50,.015);
+    backdrop-filter:blur(25px);
 }
 
 .grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:18px;
+    gap:17px;
 }
 
 .field label{
     display:block;
-    margin-bottom:9px;
-    color:#aaa;
-    font-size:11px;
+    margin-bottom:8px;
+    color:#8a8a92;
+    font-size:9px;
+    letter-spacing:1.7px;
     text-transform:uppercase;
-    letter-spacing:1.5px;
 }
 
-select,
-input{
+input,
+select{
     width:100%;
     height:53px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,.08);
-    outline:none;
-    background:#0c0c0e;
-    color:white;
     padding:0 15px;
-    font-size:14px;
-    transition:.2s;
+    color:white;
+    background:#0b0b0e;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:11px;
+    outline:none;
 }
 
-select:focus,
-input:focus{
-    border-color:#ff1738;
-    box-shadow:0 0 20px rgba(255,0,40,.1);
+input:focus,
+select:focus{
+    border-color:rgba(255,23,61,.65);
+    box-shadow:0 0 25px rgba(255,0,50,.08);
+}
+
+select option{
+    background:#09090b;
 }
 
 .generate{
     width:100%;
     margin-top:20px;
-    height:58px;
-    font-size:14px;
+    height:59px;
 }
 
-/* =========================
+/* =====================================================
    ANALYSIS
-========================= */
+===================================================== */
 
 .analysis{
     display:none;
     text-align:center;
-    padding:55px 20px;
+    padding:55px 15px 10px;
 }
 
-.analysis.active{
+.analysis.show{
     display:block;
-    animation:fade .5s ease;
+    animation:fadeUp .5s ease;
 }
 
-.loader{
-    width:80px;
-    height:80px;
-    margin:0 auto 25px;
+.loader-ring{
+    width:88px;
+    height:88px;
+    margin:auto;
     border-radius:50%;
-    border:2px solid rgba(255,23,56,.15);
-    border-top-color:#ff1738;
-    border-right-color:#ff1738;
+    border:2px solid rgba(255,23,61,.1);
+    border-top-color:var(--red);
+    border-right-color:var(--red);
+    box-shadow:0 0 35px rgba(255,0,50,.12);
     animation:spin .8s linear infinite;
-    box-shadow:0 0 30px rgba(255,0,40,.15);
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg)}
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 .analysis h3{
-    font-size:22px;
-    margin-bottom:10px;
+    margin-top:25px;
+    font-size:20px;
 }
 
 .analysis p{
-    color:#777;
-    font-size:13px;
+    margin-top:8px;
+    color:#676770;
+    font-size:12px;
 }
 
-.analysis-line{
-    margin:25px auto 0;
-    width:min(400px,90%);
+.progress{
+    width:min(500px,100%);
     height:3px;
-    background:#151515;
+    margin:24px auto 0;
     overflow:hidden;
+    background:#17171b;
     border-radius:20px;
 }
 
-.analysis-line span{
+.progress span{
     display:block;
     width:0;
     height:100%;
-    background:#ff1738;
-    box-shadow:0 0 15px #ff1738;
-    transition:width 3.2s linear;
+    background:var(--red);
+    box-shadow:0 0 18px var(--red);
+    transition:width 3.4s linear;
 }
 
-/* =========================
-   RESULTS
-========================= */
+/* =====================================================
+   RESULT
+===================================================== */
 
 .results{
     display:none;
     margin-top:30px;
 }
 
-.results.active{
+.results.show{
     display:block;
-    animation:fade .8s ease;
+    animation:fadeUp .7s ease;
 }
 
-@keyframes fade{
+@keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(15px);
+        transform:translateY(20px);
     }
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:none;
     }
 }
 
-.result-header{
+.result-title{
     text-align:center;
     margin-bottom:25px;
 }
 
-.result-header .mini{
-    color:#ff2948;
-    font-size:10px;
+.result-title small{
+    color:var(--red);
+    font-size:9px;
     letter-spacing:3px;
 }
 
-.result-header h2{
-    margin-top:8px;
-    font-size:30px;
+.result-title h2{
+    margin-top:9px;
+    font-size:31px;
 }
 
-.profile{
+.score{
+    position:relative;
+    width:150px;
+    height:150px;
+    margin:0 auto 28px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:
+        radial-gradient(
+            circle,
+            #101014 56%,
+            transparent 57%
+        );
+    border:2px solid rgba(255,23,61,.2);
+    box-shadow:
+        0 0 50px rgba(255,0,50,.12),
+        inset 0 0 30px rgba(255,0,50,.05);
+}
+
+.score::before{
+    content:"";
+    position:absolute;
+    inset:-7px;
+    border-radius:50%;
+    border:2px solid transparent;
+    border-top-color:var(--red);
+    border-left-color:var(--red);
+    animation:spin 2s linear infinite;
+}
+
+.score-number{
+    font-size:43px;
+    font-weight:950;
+}
+
+.score-label{
+    position:absolute;
+    bottom:25px;
+    font-size:8px;
+    color:#777;
+    letter-spacing:2px;
+}
+
+.sensi-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
-.sensi-card{
-    padding:22px;
-    background:rgba(10,10,12,.9);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:14px;
+.sensi{
     position:relative;
     overflow:hidden;
+    padding:21px;
+    border-radius:15px;
+    background:rgba(8,8,11,.86);
+    border:1px solid rgba(255,255,255,.06);
 }
 
-.sensi-card::before{
+.sensi::after{
     content:"";
     position:absolute;
-    top:0;
     left:0;
+    bottom:0;
     width:100%;
-    height:1px;
-    background:linear-gradient(90deg,transparent,#ff1738,transparent);
+    height:2px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        transparent
+    );
+    box-shadow:0 0 14px var(--red);
 }
 
-.sensi-card small{
-    color:#777;
-    font-size:10px;
+.sensi span{
+    color:#73737b;
+    font-size:9px;
     letter-spacing:1.5px;
 }
 
-.sensi-card strong{
+.sensi strong{
     display:block;
     margin-top:8px;
-    font-size:38px;
+    font-size:35px;
 }
 
-.sensi-card strong::after{
-    content:"";
+.result-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:18px;
+}
+
+/* =====================================================
+   ANALYTICS
+===================================================== */
+
+.analytics{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:12px;
+}
+
+.metric{
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.055);
+}
+
+.metric-top{
+    display:flex;
+    justify-content:space-between;
+    color:#888891;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.metric-value{
+    margin-top:10px;
+    font-size:21px;
+    font-weight:900;
+}
+
+.bar{
+    height:4px;
+    margin-top:14px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#17171b;
+}
+
+.bar span{
     display:block;
-    width:30px;
-    height:2px;
-    margin-top:9px;
-    background:#ff1738;
-    box-shadow:0 0 10px #ff1738;
+    height:100%;
+    width:0;
+    background:var(--red);
+    box-shadow:0 0 12px var(--red);
+    transition:1.4s ease;
 }
 
-.profile-type{
-    margin-top:20px;
-    padding:16px;
-    text-align:center;
-    border-radius:12px;
-    border:1px solid rgba(255,23,56,.2);
-    background:rgba(255,0,40,.035);
-    color:#ff6b7f;
-    font-size:11px;
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music-box{
+    padding:24px;
+    border-radius:22px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,15,18,.85),
+            rgba(5,5,7,.78)
+        );
+    border:1px solid rgba(255,23,61,.2);
+    backdrop-filter:blur(20px);
+}
+
+.music-main{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.album{
+    flex:none;
+    width:70px;
+    height:70px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #ff244b,
+            #6e001d 35%,
+            #09090b 70%
+        );
+    box-shadow:0 0 30px rgba(255,0,50,.18);
+    font-size:25px;
+}
+
+.music-info{
+    flex:1;
+}
+
+.music-info small{
+    color:var(--red);
+    font-size:8px;
     letter-spacing:2px;
 }
 
-.reset{
-    display:block;
-    margin:20px auto 0;
+.music-info h3{
+    margin-top:7px;
+    font-size:15px;
 }
 
-/* =========================
+.music-info p{
+    margin-top:4px;
+    color:#66666e;
+    font-size:10px;
+}
+
+.music-controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.circle-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    cursor:pointer;
+    color:white;
+    background:#0e0e11;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.circle-btn.main{
+    background:var(--red);
+    border-color:transparent;
+    box-shadow:0 0 25px rgba(255,0,50,.22);
+}
+
+.music-progress{
+    height:4px;
+    background:#18181c;
+    border-radius:20px;
+    margin-top:22px;
+    cursor:pointer;
+}
+
+.music-progress span{
+    display:block;
+    width:0;
+    height:100%;
+    border-radius:20px;
+    background:var(--red);
+    box-shadow:0 0 10px var(--red);
+}
+
+.music-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-top:15px;
+}
+
+.music-time{
+    color:#55555d;
+    font-size:9px;
+}
+
+.volume{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.volume input{
+    width:100px;
+    height:auto;
+}
+
+/* =====================================================
+   AI
+===================================================== */
+
+.ai{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:80;
+}
+
+.ai-button{
+    width:59px;
+    height:59px;
+    border-radius:50%;
+    border:1px solid rgba(255,23,61,.4);
+    background:#0b0b0e;
+    color:white;
+    cursor:pointer;
+    box-shadow:
+        0 0 25px rgba(255,0,50,.18);
+    font-weight:900;
+}
+
+.ai-panel{
+    position:absolute;
+    right:0;
+    bottom:72px;
+    width:320px;
+    display:none;
+    overflow:hidden;
+    border-radius:18px;
+    border:1px solid rgba(255,23,61,.25);
+    background:rgba(8,8,11,.94);
+    box-shadow:0 25px 70px rgba(0,0,0,.55);
+    backdrop-filter:blur(20px);
+}
+
+.ai-panel.show{
+    display:block;
+    animation:fadeUp .3s ease;
+}
+
+.ai-head{
+    padding:17px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.ai-head strong{
+    font-size:13px;
+}
+
+.ai-head p{
+    margin-top:5px;
+    color:#686870;
+    font-size:9px;
+}
+
+.ai-messages{
+    height:220px;
+    overflow-y:auto;
+    padding:14px;
+}
+
+.msg{
+    max-width:85%;
+    padding:10px;
+    margin-bottom:9px;
+    border-radius:10px;
+    background:#111115;
+    color:#aaa;
+    font-size:10px;
+    line-height:1.6;
+}
+
+.msg.user{
+    margin-left:auto;
+    background:rgba(255,0,50,.12);
+    color:#ff8b9c;
+}
+
+.ai-input{
+    display:flex;
+    gap:7px;
+    padding:10px;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.ai-input input{
+    height:43px;
+}
+
+.ai-input button{
+    width:45px;
+    border-radius:9px;
+    border:0;
+    color:#fff;
+    background:var(--red);
+    cursor:pointer;
+}
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
-    padding:40px 20px;
+    padding:50px 20px;
     text-align:center;
-    border-top:1px solid rgba(255,255,255,.05);
-    color:#444;
-    font-size:10px;
+    border-top:1px solid rgba(255,255,255,.04);
+    color:#414148;
+    font-size:9px;
     letter-spacing:2px;
 }
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
-@media(max-width:700px){
+@media(max-width:760px){
 
-    .topbar{
+    .nav{
         padding:0 20px;
     }
 
-    .status{
-        font-size:9px;
+    .live{
+        display:none;
     }
 
     .hero h1{
-        letter-spacing:-4px;
+        letter-spacing:-5px;
     }
 
-    .hero-sub{
-        font-size:13px;
-    }
-
-    .generator-card{
+    .generator{
         padding:18px;
     }
 
@@ -518,27 +884,59 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .profile{
+    .sensi-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .sensi-card{
-        padding:17px;
+    .analytics{
+        grid-template-columns:1fr;
     }
 
-    .sensi-card strong{
-        font-size:31px;
+    .music-main{
+        align-items:flex-start;
+    }
+
+    .music-controls{
+        margin-left:auto;
+    }
+
+    .music-info{
+        min-width:0;
+    }
+
+    .music-info h3{
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .ai-panel{
+        right:-8px;
+        width:min(320px,calc(100vw - 30px));
     }
 }
 
-@media(max-width:420px){
+@media(max-width:430px){
 
-    .profile{
-        grid-template-columns:1fr;
+    .hero{
+        padding-top:100px;
     }
 
     .hero-buttons .btn{
         width:100%;
+    }
+
+    .sensi-grid{
+        grid-template-columns:1fr;
+    }
+
+    .music-main{
+        flex-wrap:wrap;
+    }
+
+    .music-controls{
+        width:100%;
+        justify-content:center;
     }
 }
 </style>
@@ -546,22 +944,33 @@ footer{
 
 <body>
 
-<!-- NEON BACKGROUND -->
-<div class="network">
-    <canvas id="networkCanvas"></canvas>
-    <div class="red-glow one"></div>
-    <div class="red-glow two"></div>
-</div>
+<canvas id="network"></canvas>
 
-<!-- TOP BAR -->
-<header class="topbar">
+<div class="bg-light one"></div>
+<div class="bg-light two"></div>
+
+
+<!-- NAV -->
+<nav class="nav">
+
     <div class="logo">𝑾Á𝑹𝑺𝑯</div>
 
-    <div class="status">
-        <span class="status-dot"></span>
-        SYSTEM ONLINE
+    <div class="nav-right">
+
+        <div class="live">
+            <span class="live-dot"></span>
+            WARSH ENGINE ONLINE
+        </div>
+
+        <button
+            class="music-mini"
+            onclick="toggleMusic()">
+            ♪
+        </button>
+
     </div>
-</header>
+
+</nav>
 
 
 <!-- HERO -->
@@ -569,27 +978,35 @@ footer{
 
     <div class="hero-content">
 
-        <div class="tag">
+        <div class="eyebrow">
             GARENA FREE FIRE • 2026
         </div>
 
-        <h1>𝑾<span>Á</span>𝑹𝑺𝑯</h1>
+        <h1>
+            𝑾<span>Á</span>𝑹𝑺𝑯
+        </h1>
 
-        <p class="hero-sub">
-            Cihazına ve oyun tarzına göre optimize edilmiş
-            Free Fire hassasiyet profili oluştur.
+        <p class="hero-desc">
+            Cihaz bilgilerini analiz ederek oyun tarzına
+            uygun Free Fire hassasiyet profili oluştur.
+            Daha kontrollü drag, daha hızlı tepki ve
+            kişiselleştirilmiş aim profili.
         </p>
 
         <div class="hero-buttons">
-            <button class="btn btn-main"
-                    onclick="document.getElementById('generator').scrollIntoView()">
-                SİSTEME GİR
-            </button>
 
-            <button class="btn btn-dark"
-                    onclick="document.getElementById('generator').scrollIntoView()">
+            <button
+                class="btn btn-red"
+                onclick="goGenerator()">
                 HASSASİYET OLUŞTUR
             </button>
+
+            <button
+                class="btn btn-dark"
+                onclick="goMusic()">
+                WARSH MUSIC
+            </button>
+
         </div>
 
     </div>
@@ -598,14 +1015,25 @@ footer{
 
 
 <!-- GENERATOR -->
-<section class="generator" id="generator">
+<section class="section" id="generator">
 
-    <div class="section-title">
+<div class="container">
+
+    <div class="section-head">
+
         <small>WARSH ENGINE</small>
-        <h2>Hassasiyetini Oluştur</h2>
+
+        <h2>Cihazını Tanımla</h2>
+
+        <p>
+            Ne kadar fazla bilgi girersen profil oluşturma
+            algoritmasının kullanacağı parametreler o kadar detaylı olur.
+        </p>
+
     </div>
 
-    <div class="generator-card">
+
+    <div class="generator">
 
         <div class="grid">
 
@@ -613,7 +1041,9 @@ footer{
                 <label>Telefon Markası</label>
 
                 <select id="brand">
+
                     <option value="">Marka seç</option>
+
                     <option>Apple</option>
                     <option>Samsung</option>
                     <option>Xiaomi</option>
@@ -624,220 +1054,619 @@ footer{
                     <option>OPPO</option>
                     <option>vivo</option>
                     <option>Huawei</option>
+                    <option>OnePlus</option>
+                    <option>Realme</option>
                     <option>Diğer</option>
+
                 </select>
             </div>
 
 
             <div class="field">
+
                 <label>Telefon Modeli</label>
 
                 <input
                     id="model"
-                    type="text"
-                    placeholder="Örn. iPhone 15 Pro">
+                    placeholder="Örn. iPhone 15 Pro Max">
+
             </div>
 
 
             <div class="field">
+
+                <label>RAM</label>
+
+                <select id="ram">
+
+                    <option>4 GB</option>
+                    <option>6 GB</option>
+                    <option selected>8 GB</option>
+                    <option>12 GB</option>
+                    <option>16 GB</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Ekran Hz</label>
+
+                <select id="hz">
+
+                    <option>60 Hz</option>
+                    <option>90 Hz</option>
+                    <option selected>120 Hz</option>
+                    <option>144 Hz</option>
+                    <option>165 Hz</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
                 <label>FPS</label>
 
                 <select id="fps">
-                    <option value="60">60 FPS</option>
-                    <option value="90">90 FPS</option>
-                    <option value="120" selected>120 FPS</option>
+
+                    <option>60 FPS</option>
+                    <option>90 FPS</option>
+                    <option selected>120 FPS</option>
+
                 </select>
+
             </div>
 
 
             <div class="field">
+
+                <label>DPI</label>
+
+                <input
+                    id="dpi"
+                    type="number"
+                    placeholder="Örn. 450">
+
+            </div>
+
+
+            <div class="field">
+
                 <label>Oyun Tarzı</label>
 
                 <select id="style">
-                    <option value="headshot">Headshot</option>
-                    <option value="rush">Rush</option>
-                    <option value="balanced">Balanced</option>
-                    <option value="precision">Precision</option>
+
+                    <option value="headshot">
+                        Headshot
+                    </option>
+
+                    <option value="rush">
+                        Rush
+                    </option>
+
+                    <option value="precision">
+                        Precision
+                    </option>
+
+                    <option value="balanced">
+                        Balanced
+                    </option>
+
                 </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Kontrol</label>
+
+                <select id="control">
+
+                    <option value="two">
+                        2 Parmak
+                    </option>
+
+                    <option value="three">
+                        3 Parmak
+                    </option>
+
+                    <option value="four">
+                        4 Parmak
+                    </option>
+
+                    <option value="five">
+                        5 Parmak
+                    </option>
+
+                </select>
+
             </div>
 
         </div>
 
 
-        <button class="btn btn-main generate" onclick="generateSensitivity()">
-            ⚡ HASSASİYET ÜRET
+        <button
+            class="btn btn-red generate"
+            onclick="generate()">
+
+            ⚡ WARSH HASSASİYET ÜRET
+
         </button>
 
 
         <!-- ANALYSIS -->
-        <div class="analysis" id="analysis">
 
-            <div class="loader"></div>
+        <div
+            class="analysis"
+            id="analysis">
+
+            <div class="loader-ring"></div>
 
             <h3 id="analysisText">
                 Cihaz analiz ediliyor...
             </h3>
 
             <p>
-                WARSH Engine hassasiyet profilini oluşturuyor
+                WARSH Engine profilini hazırlıyor
             </p>
 
-            <div class="analysis-line">
-                <span id="progress"></span>
+            <div class="progress">
+
+                <span id="progressBar"></span>
+
             </div>
 
         </div>
 
 
         <!-- RESULTS -->
-        <div class="results" id="results">
 
-            <div class="result-header">
+        <div
+            class="results"
+            id="results">
 
-                <div class="mini">
+            <div class="result-title">
+
+                <small>
                     WARSH PROFILE GENERATED
-                </div>
+                </small>
 
-                <h2>Hassasiyet Profilin</h2>
+                <h2>
+                    Hassasiyet Profilin
+                </h2>
 
             </div>
 
 
-            <div class="profile">
+            <div class="score">
 
-                <div class="sensi-card">
-                    <small>GENEL</small>
+                <div
+                    class="score-number"
+                    id="score">
+                    0
+                </div>
+
+                <div class="score-label">
+                    WARSH SCORE
+                </div>
+
+            </div>
+
+
+            <div class="sensi-grid">
+
+                <div class="sensi">
+                    <span>GENEL</span>
                     <strong id="general">--</strong>
                 </div>
 
-                <div class="sensi-card">
-                    <small>RED DOT</small>
+                <div class="sensi">
+                    <span>RED DOT</span>
                     <strong id="redDot">--</strong>
                 </div>
 
-                <div class="sensi-card">
-                    <small>2X SCOPE</small>
+                <div class="sensi">
+                    <span>2X SCOPE</span>
                     <strong id="scope2">--</strong>
                 </div>
 
-                <div class="sensi-card">
-                    <small>4X SCOPE</small>
+                <div class="sensi">
+                    <span>4X SCOPE</span>
                     <strong id="scope4">--</strong>
                 </div>
 
-                <div class="sensi-card">
-                    <small>SNIPER</small>
+                <div class="sensi">
+                    <span>SNIPER</span>
                     <strong id="sniper">--</strong>
                 </div>
 
-                <div class="sensi-card">
-                    <small>FREE LOOK</small>
+                <div class="sensi">
+                    <span>FREE LOOK</span>
                     <strong id="freeLook">--</strong>
                 </div>
 
             </div>
 
 
-            <div class="profile-type">
-                HEADSHOT ODAKLI WARSH PROFİLİ
+            <div class="analytics">
+
+                <div class="metric">
+
+                    <div class="metric-top">
+                        <span>AIM STABILITY</span>
+                        <span id="aimValue">0%</span>
+                    </div>
+
+                    <div class="metric-value">
+                        AIM
+                    </div>
+
+                    <div class="bar">
+                        <span id="aimBar"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-top">
+                        <span>DRAG CONTROL</span>
+                        <span id="dragValue">0%</span>
+                    </div>
+
+                    <div class="metric-value">
+                        DRAG
+                    </div>
+
+                    <div class="bar">
+                        <span id="dragBar"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-top">
+                        <span>TOUCH RESPONSE</span>
+                        <span id="touchValue">0%</span>
+                    </div>
+
+                    <div class="metric-value">
+                        TOUCH
+                    </div>
+
+                    <div class="bar">
+                        <span id="touchBar"></span>
+                    </div>
+
+                </div>
+
             </div>
 
 
-            <button
-                class="btn btn-dark reset"
-                onclick="resetGenerator()">
-                YENİ PROFİL OLUŞTUR
-            </button>
+            <div class="result-actions">
+
+                <button
+                    class="btn btn-red"
+                    onclick="copyResult()">
+
+                    KOPYALA
+
+                </button>
+
+                <button
+                    class="btn btn-dark"
+                    onclick="generate()">
+
+                    YENİ PROFİL
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
+</div>
+
 </section>
 
+
+<!-- MUSIC -->
+<section
+    class="section"
+    id="music">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <small>WARSH MUSIC</small>
+
+        <h2>Oyun Modunu Aç</h2>
+
+        <p>
+            Kendi müziğini seç ve WARSH arayüzünün
+            içinde oynat.
+        </p>
+
+    </div>
+
+
+    <div class="music-box">
+
+        <div class="music-main">
+
+            <div class="album">
+                ♪
+            </div>
+
+
+            <div class="music-info">
+
+                <small>NOW PLAYING</small>
+
+                <h3 id="songName">
+                    Henüz şarkı seçilmedi
+                </h3>
+
+                <p id="songStatus">
+                    MP3 veya WAV dosyanı yükle
+                </p>
+
+            </div>
+
+
+            <div class="music-controls">
+
+                <button
+                    class="circle-btn"
+                    onclick="previousMusic()">
+                    ↶
+                </button>
+
+                <button
+                    class="circle-btn main"
+                    onclick="toggleMusic()"
+                    id="playButton">
+                    ▶
+                </button>
+
+                <button
+                    class="circle-btn"
+                    onclick="nextMusic()">
+                    ↷
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="music-progress"
+            id="musicProgress">
+
+            <span id="musicProgressBar"></span>
+
+        </div>
+
+
+        <div class="music-bottom">
+
+            <div
+                class="music-time"
+                id="musicTime">
+                00:00 / 00:00
+            </div>
+
+
+            <div class="volume">
+
+                <span>🔊</span>
+
+                <input
+                    id="volume"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step=".01"
+                    value=".65">
+
+            </div>
+
+        </div>
+
+
+        <div style="margin-top:18px;">
+
+            <label
+                class="btn btn-dark"
+                style="
+                    display:inline-flex;
+                    align-items:center;
+                    cursor:pointer;
+                ">
+
+                🎵 ŞARKI EKLE
+
+                <input
+                    type="file"
+                    id="songFile"
+                    accept="audio/*"
+                    hidden>
+
+            </label>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
     𝑾Á𝑹𝑺𝑯 • FREE FIRE SENSITIVITY ENGINE • 2026
 </footer>
 
 
+<!-- AI -->
+
+<div class="ai">
+
+    <div
+        class="ai-panel"
+        id="aiPanel">
+
+        <div class="ai-head">
+
+            <strong>
+                𝑾Á𝑹𝑺𝑯 AI
+            </strong>
+
+            <p>
+                Free Fire taktik asistanı
+            </p>
+
+        </div>
+
+
+        <div
+            class="ai-messages"
+            id="messages">
+
+            <div class="msg">
+
+                Selam. Free Fire hakkında
+                soru sorabilirsin.
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-input">
+
+            <input
+                id="aiInput"
+                placeholder="Bir şey sor...">
+
+            <button onclick="askAI()">
+                ↑
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="ai-button"
+        onclick="toggleAI()">
+
+        AI
+
+    </button>
+
+</div>
+
+
+<audio id="audio"></audio>
+
+
 <script>
 
-/* =====================================
-   ANIMATED NEON RED NETWORK
-===================================== */
+/* =====================================================
+   NEON NETWORK
+===================================================== */
 
-const canvas = document.getElementById("networkCanvas");
-const ctx = canvas.getContext("2d");
+const canvas =
+    document.getElementById("network");
 
-let particles = [];
-let width;
-let height;
+const ctx =
+    canvas.getContext("2d");
 
-function resizeCanvas(){
+let particles=[];
+let W,H;
 
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+function resize(){
 
-    particles = [];
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
 
-    const count =
-        window.innerWidth < 600 ? 35 : 70;
+    particles=[];
 
-    for(let i=0;i<count;i++){
+    const amount =
+        window.innerWidth < 600
+        ? 42
+        : 95;
+
+    for(let i=0;i<amount;i++){
 
         particles.push({
 
-            x:Math.random()*width,
-            y:Math.random()*height,
+            x:Math.random()*W,
+            y:Math.random()*H,
 
-            vx:(Math.random()-.5)*.35,
-            vy:(Math.random()-.5)*.35,
+            vx:(Math.random()-.5)*.42,
+            vy:(Math.random()-.5)*.42,
 
-            size:Math.random()*1.8+.5,
+            r:Math.random()*1.6+.3,
 
-            alpha:Math.random()*.7+.15
+            a:Math.random()*.6+.15
 
         });
 
     }
 }
 
-window.addEventListener("resize",resizeCanvas);
+window.addEventListener("resize",resize);
 
-resizeCanvas();
+resize();
 
 
-function drawNetwork(){
+function animateNetwork(){
 
-    ctx.clearRect(0,0,width,height);
+    ctx.clearRect(0,0,W,H);
 
     for(const p of particles){
 
-        p.x += p.vx;
-        p.y += p.vy;
+        p.x+=p.vx;
+        p.y+=p.vy;
 
-        if(p.x<0 || p.x>width)
-            p.vx *= -1;
+        if(p.x<0 || p.x>W)
+            p.vx*=-1;
 
-        if(p.y<0 || p.y>height)
-            p.vy *= -1;
+        if(p.y<0 || p.y>H)
+            p.vy*=-1;
 
         ctx.beginPath();
 
         ctx.arc(
             p.x,
             p.y,
-            p.size,
+            p.r,
             0,
             Math.PI*2
         );
 
-        ctx.fillStyle =
-            `rgba(255,20,55,${p.alpha})`;
+        ctx.fillStyle=
+            `rgba(255,18,58,${p.a})`;
 
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = "#ff1738";
+        ctx.shadowBlur=12;
+        ctx.shadowColor="#ff123c";
 
         ctx.fill();
     }
@@ -847,115 +1676,139 @@ function drawNetwork(){
 
         for(let j=i+1;j<particles.length;j++){
 
-            const a = particles[i];
-            const b = particles[j];
+            const a=particles[i];
+            const b=particles[j];
 
-            const dx = a.x-b.x;
-            const dy = a.y-b.y;
+            const dx=a.x-b.x;
+            const dy=a.y-b.y;
 
-            const distance =
-                Math.sqrt(dx*dx+dy*dy);
+            const d=Math.sqrt(
+                dx*dx+dy*dy
+            );
 
-            if(distance < 145){
+            if(d<155){
 
-                const opacity =
-                    (1-distance/145)*.22;
+                const opacity=
+                    (1-d/155)*.25;
 
                 ctx.beginPath();
 
                 ctx.moveTo(a.x,a.y);
                 ctx.lineTo(b.x,b.y);
 
-                ctx.strokeStyle =
-                    `rgba(255,20,55,${opacity})`;
+                ctx.strokeStyle=
+                    `rgba(255,18,58,${opacity})`;
 
-                ctx.lineWidth=.7;
-
-                ctx.shadowBlur=7;
-                ctx.shadowColor="#ff1738";
+                ctx.lineWidth=.65;
 
                 ctx.stroke();
             }
         }
     }
 
-    requestAnimationFrame(drawNetwork);
+    requestAnimationFrame(animateNetwork);
 }
 
-drawNetwork();
+animateNetwork();
 
 
-/* =====================================
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function goGenerator(){
+
+    document
+        .getElementById("generator")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+function goMusic(){
+
+    document
+        .getElementById("music")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =====================================================
    SENSITIVITY ENGINE
-===================================== */
+===================================================== */
 
-function randomRange(min,max){
+function rnd(min,max){
 
     return Math.floor(
         Math.random()*(max-min+1)+min
     );
+
 }
 
 
-function generateSensitivity(){
+function generate(){
 
-    const brand =
+    const brand=
         document.getElementById("brand").value;
 
-    const model =
-        document.getElementById("model").value;
-
-    const style =
-        document.getElementById("style").value;
+    const model=
+        document.getElementById("model").value.trim();
 
     if(!brand){
 
-        alert("Lütfen telefon markasını seç.");
+        alert("Telefon markasını seç.");
 
         return;
+
+    }
+
+    if(!model){
+
+        alert("Telefon modelini yaz.");
+
+        return;
+
     }
 
 
-    if(!model.trim()){
-
-        alert("Lütfen telefon modelini yaz.");
-
-        return;
-    }
-
-
-    const analysis =
+    const analysis=
         document.getElementById("analysis");
 
-    const results =
+    const results=
         document.getElementById("results");
 
-    const progress =
-        document.getElementById("progress");
+    const bar=
+        document.getElementById("progressBar");
 
-    const text =
+    const text=
         document.getElementById("analysisText");
 
 
-    results.classList.remove("active");
+    results.classList.remove("show");
 
-    analysis.classList.add("active");
+    analysis.classList.add("show");
 
-    progress.style.width="0%";
+    bar.style.width="0%";
 
 
     setTimeout(()=>{
-        progress.style.width="100%";
+        bar.style.width="100%";
     },100);
 
 
-    const messages = [
+    const steps=[
 
-        "Cihaz analiz ediliyor...",
+        "Cihaz profili okunuyor...",
 
-        "Dokunmatik tepkisi ölçülüyor...",
+        "Ekran yenileme hızı analiz ediliyor...",
 
-        "FPS profili değerlendiriliyor...",
+        "Dokunmatik tepki profili hazırlanıyor...",
+
+        "FPS davranışı hesaplanıyor...",
 
         "Aim profili oluşturuluyor...",
 
@@ -964,126 +1817,479 @@ function generateSensitivity(){
     ];
 
 
-    let index=0;
+    let i=0;
 
-    const messageInterval =
-        setInterval(()=>{
+    const interval=setInterval(()=>{
 
-            text.textContent =
-                messages[index];
+        text.textContent=steps[i];
 
-            index++;
+        i++;
 
-            if(index>=messages.length)
-                clearInterval(messageInterval);
+        if(i>=steps.length)
+            clearInterval(interval);
 
-        },620);
+    },560);
 
 
     setTimeout(()=>{
 
-        analysis.classList.remove("active");
+        analysis.classList.remove("show");
 
-        createResult(style);
+        createProfile();
 
-        results.classList.add("active");
+        results.classList.add("show");
 
         results.scrollIntoView({
             behavior:"smooth",
             block:"center"
         });
 
-    },3500);
+    },3600);
 
 }
 
 
-/* =====================================
-   RESULT GENERATOR
-===================================== */
+function createProfile(){
 
-function createResult(style){
+    const style=
+        document.getElementById("style").value;
 
-    let general;
-    let redDot;
-    let scope2;
-    let scope4;
-    let sniper;
-    let freeLook;
-
+    let g,r,s2,s4,sn,fl;
 
     if(style==="headshot"){
 
-        general=randomRange(165,180);
-        redDot=randomRange(160,178);
-        scope2=randomRange(150,170);
-        scope4=randomRange(135,158);
-        sniper=randomRange(95,125);
-        freeLook=randomRange(155,180);
+        g=rnd(165,180);
+        r=rnd(160,178);
+        s2=rnd(150,170);
+        s4=rnd(135,158);
+        sn=rnd(95,120);
+        fl=rnd(155,180);
 
     }
 
     else if(style==="rush"){
 
-        general=randomRange(170,180);
-        redDot=randomRange(165,180);
-        scope2=randomRange(155,175);
-        scope4=randomRange(140,160);
-        sniper=randomRange(90,115);
-        freeLook=randomRange(165,180);
+        g=rnd(170,180);
+        r=rnd(165,180);
+        s2=rnd(155,175);
+        s4=rnd(140,160);
+        sn=rnd(90,115);
+        fl=rnd(165,180);
 
     }
 
     else if(style==="precision"){
 
-        general=randomRange(145,165);
-        redDot=randomRange(145,165);
-        scope2=randomRange(135,155);
-        scope4=randomRange(125,145);
-        sniper=randomRange(100,125);
-        freeLook=randomRange(140,165);
+        g=rnd(145,165);
+        r=rnd(145,165);
+        s2=rnd(135,155);
+        s4=rnd(125,145);
+        sn=rnd(100,125);
+        fl=rnd(140,165);
 
     }
 
     else{
 
-        general=randomRange(155,175);
-        redDot=randomRange(150,170);
-        scope2=randomRange(140,160);
-        scope4=randomRange(130,150);
-        sniper=randomRange(95,120);
-        freeLook=randomRange(150,175);
+        g=rnd(155,175);
+        r=rnd(150,170);
+        s2=rnd(140,160);
+        s4=rnd(130,150);
+        sn=rnd(95,120);
+        fl=rnd(150,175);
 
     }
 
 
-    document.getElementById("general").textContent=general;
-    document.getElementById("redDot").textContent=redDot;
-    document.getElementById("scope2").textContent=scope2;
-    document.getElementById("scope4").textContent=scope4;
-    document.getElementById("sniper").textContent=sniper;
-    document.getElementById("freeLook").textContent=freeLook;
+    setText("general",g);
+    setText("redDot",r);
+    setText("scope2",s2);
+    setText("scope4",s4);
+    setText("sniper",sn);
+    setText("freeLook",fl);
+
+
+    const score=
+        rnd(86,98);
+
+    animateNumber(
+        document.getElementById("score"),
+        score
+    );
+
+
+    const aim=rnd(87,98);
+    const drag=rnd(84,97);
+    const touch=rnd(88,99);
+
+    setMetric("aim",aim);
+    setMetric("drag",drag);
+    setMetric("touch",touch);
+
 }
 
 
-/* =====================================
-   RESET
-===================================== */
+function setText(id,value){
 
-function resetGenerator(){
+    document.getElementById(id)
+        .textContent=value;
 
-    document.getElementById("results")
-        .classList.remove("active");
+}
 
-    document.getElementById("generator")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"start"
+
+function animateNumber(el,target){
+
+    let current=0;
+
+    const timer=setInterval(()=>{
+
+        current++;
+
+        el.textContent=current;
+
+        if(current>=target)
+            clearInterval(timer);
+
+    },18);
+
+}
+
+
+function setMetric(id,value){
+
+    document.getElementById(id+"Value")
+        .textContent=value+"%";
+
+    setTimeout(()=>{
+
+        document.getElementById(id+"Bar")
+            .style.width=value+"%";
+
+    },100);
+
+}
+
+
+/* =====================================================
+   COPY
+===================================================== */
+
+function copyResult(){
+
+    const values={
+
+        Genel:document.getElementById("general").textContent,
+
+        "Red Dot":
+            document.getElementById("redDot").textContent,
+
+        "2X":
+            document.getElementById("scope2").textContent,
+
+        "4X":
+            document.getElementById("scope4").textContent,
+
+        Sniper:
+            document.getElementById("sniper").textContent,
+
+        "Free Look":
+            document.getElementById("freeLook").textContent
+
+    };
+
+
+    const text=
+`𝑾Á𝑹𝑺𝑯 FREE FIRE PROFİLİ
+
+Genel: ${values.Genel}
+Red Dot: ${values["Red Dot"]}
+2X: ${values["2X"]}
+4X: ${values["4X"]}
+Sniper: ${values.Sniper}
+Free Look: ${values["Free Look"]}`;
+
+
+    navigator.clipboard
+        .writeText(text)
+        .then(()=>{
+            alert("Hassasiyet kopyalandı.");
         });
 
 }
 
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const audio=
+    document.getElementById("audio");
+
+const songFile=
+    document.getElementById("songFile");
+
+const songName=
+    document.getElementById("songName");
+
+const songStatus=
+    document.getElementById("songStatus");
+
+const playButton=
+    document.getElementById("playButton");
+
+const musicBar=
+    document.getElementById("musicProgressBar");
+
+const musicTime=
+    document.getElementById("musicTime");
+
+const volume=
+    document.getElementById("volume");
+
+
+songFile.addEventListener(
+    "change",
+    function(){
+
+        const file=this.files[0];
+
+        if(!file)
+            return;
+
+        audio.src=
+            URL.createObjectURL(file);
+
+        songName.textContent=file.name;
+
+        songStatus.textContent=
+            "WARSH Music hazır";
+
+        audio.load();
+
+    }
+);
+
+
+function toggleMusic(){
+
+    if(!audio.src){
+
+        goMusic();
+
+        return;
+
+    }
+
+
+    if(audio.paused){
+
+        audio.play();
+
+        playButton.textContent="Ⅱ";
+
+    }else{
+
+        audio.pause();
+
+        playButton.textContent="▶";
+
+    }
+
+}
+
+
+audio.addEventListener(
+    "timeupdate",
+    ()=>{
+
+        if(!audio.duration)
+            return;
+
+        const percent=
+            audio.currentTime/
+            audio.duration*
+            100;
+
+        musicBar.style.width=
+            percent+"%";
+
+        musicTime.textContent=
+            formatTime(audio.currentTime)
+            +" / "
+            +formatTime(audio.duration);
+
+    }
+);
+
+
+audio.addEventListener(
+    "ended",
+    ()=>{
+
+        playButton.textContent="▶";
+
+        musicBar.style.width="0%";
+
+    }
+);
+
+
+volume.addEventListener(
+    "input",
+    ()=>{
+        audio.volume=volume.value;
+    }
+);
+
+audio.volume=.65;
+
+
+document
+    .getElementById("musicProgress")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(!audio.duration)
+                return;
+
+            const rect=
+                this.getBoundingClientRect();
+
+            const percent=
+                (e.clientX-rect.left)/
+                rect.width;
+
+            audio.currentTime=
+                percent*audio.duration;
+
+        }
+    );
+
+
+function formatTime(seconds){
+
+    if(!isFinite(seconds))
+        return "00:00";
+
+    const min=
+        Math.floor(seconds/60);
+
+    const sec=
+        Math.floor(seconds%60)
+        .toString()
+        .padStart(2,"0");
+
+    return min+":"+sec;
+
+}
+
+
+function previousMusic(){
+
+    audio.currentTime=0;
+
+}
+
+
+function nextMusic(){
+
+    audio.currentTime=audio.duration || 0;
+
+}
+
+
+/* =====================================================
+   AI
+===================================================== */
+
+function toggleAI(){
+
+    document
+        .getElementById("aiPanel")
+        .classList.toggle("show");
+
+}
+
+
+function askAI(){
+
+    const input=
+        document.getElementById("aiInput");
+
+    const messages=
+        document.getElementById("messages");
+
+    const value=input.value.trim();
+
+    if(!value)
+        return;
+
+
+    const user=document.createElement("div");
+
+    user.className="msg user";
+
+    user.textContent=value;
+
+    messages.appendChild(user);
+
+    input.value="";
+
+
+    setTimeout(()=>{
+
+        const bot=
+            document.createElement("div");
+
+        bot.className="msg";
+
+        bot.textContent=
+            getAIResponse(value);
+
+        messages.appendChild(bot);
+
+        messages.scrollTop=
+            messages.scrollHeight;
+
+    },500);
+
+}
+
+
+function getAIResponse(question){
+
+    const q=
+        question.toLowerCase();
+
+    if(q.includes("drag"))
+        return "Drag için tek bir hassasiyet değeri yeterli değildir. Genel ve Red Dot değerini cihazının ekran tepkisiyle birlikte denemek daha doğru olur.";
+
+    if(q.includes("kafa") || q.includes("headshot"))
+        return "Headshot için nişanı hedefin üst gövde bölgesine yakın tutup kısa ve kontrollü drag hareketleri kullanmayı deneyebilirsin.";
+
+    if(q.includes("dpi"))
+        return "DPI değerini sürekli değiştirmek yerine cihazına uygun sabit bir değer kullanıp hassasiyeti buna göre ayarlamak daha tutarlı sonuç verir.";
+
+    if(q.includes("rush"))
+        return "Rush oynuyorsan hızlı kamera dönüşü ve yakın mesafe kontrolü önemli. Daha yüksek Genel ve Red Dot değerleri tercih edilebilir.";
+
+    return "Bunu Free Fire oynayış tarzına göre değerlendirebiliriz. Cihaz modelini ve hangi silahlarla oynadığını belirtirsen daha hedefli bir öneri verebilirim.";
+
+}
+
+
+document
+    .getElementById("aiInput")
+    .addEventListener(
+        "keydown",
+        e=>{
+            if(e.key==="Enter")
+                askAI();
+        }
+    );
+
 </script>
 
 </body>
-</html>
+    </html>
