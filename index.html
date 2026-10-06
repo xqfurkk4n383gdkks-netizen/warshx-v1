@@ -1,507 +1,1089 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝑾Á𝑹𝑺𝑯 - 2026 Free Fire Hassasiyet Paneli</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-deep: #05050a;
-            --primary-red: #ff1e42;
-            --primary-purple: #9d4edd;
-            --primary-turq: #00f2fe;
-            --glass-bg: rgba(18, 18, 30, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #f0f0f5;
-            --text-muted: #94a3b8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝑾Á𝑹𝑺𝑯 — Free Fire Sensitivity</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            user-select: none;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+:root{
+    --red:#ff1738;
+    --red2:#ff0033;
+    --dark:#030303;
+    --card:rgba(12,12,14,.78);
+    --border:rgba(255,23,56,.28);
+}
 
-        /* Animated Mesh Background Effects */
-        .mesh-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: radial-gradient(circle at 50% 50%, #0c0816 0%, #05050a 100%);
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.35;
-            animation: floatBlob 12s infinite alternate ease-in-out;
-        }
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:#020202;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-        .blob-1 {
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: var(--primary-red);
-            animation-delay: 0s;
-        }
+/* =========================
+   NEON NETWORK BACKGROUND
+========================= */
 
-        .blob-2 {
-            bottom: -15%;
-            right: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: var(--primary-purple);
-            animation-delay: -4s;
-        }
+.network{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 40%,
+        rgba(255,0,45,.08),
+        transparent 35%),
+        #020202;
+}
 
-        .blob-3 {
-            top: 30%;
-            left: 30%;
-            width: 40vw;
-            height: 40vw;
-            background: var(--primary-turq);
-            animation-delay: -8s;
-            opacity: 0.25;
-        }
+.network canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
 
-        @keyframes floatBlob {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -40px) scale(1.1); }
-            100% { transform: translate(-20px, 30px) scale(0.95); }
-        }
+.red-glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(255,0,40,.09);
+    filter:blur(100px);
+    animation:glowMove 9s ease-in-out infinite alternate;
+}
 
-        /* Cyberpunk Grid Overlay */
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-        }
+.red-glow.one{
+    top:-180px;
+    left:-180px;
+}
 
-        /* Main Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            position: relative;
-            z-index: 2;
-        }
+.red-glow.two{
+    right:-220px;
+    bottom:-200px;
+    animation-delay:2s;
+}
 
-        /* Header Styling */
-        header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+@keyframes glowMove{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(100px,50px) scale(1.25)}
+}
 
-        .logo-title {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-purple), var(--primary-turq));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(157, 78, 221, 0.4);
-            margin-bottom: 5px;
-        }
+/* =========================
+   TOP BAR
+========================= */
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+.topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:68px;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    background:rgba(2,2,2,.55);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            margin-bottom: 30px;
-        }
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:2px;
+}
 
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-main);
-            letter-spacing: 0.5px;
-        }
+.status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:11px;
+    color:#aaa;
+    letter-spacing:1px;
+}
 
-        .section-title i {
-            color: var(--primary-turq);
-        }
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#ff1637;
+    box-shadow:0 0 12px #ff1637;
+    animation:pulse 1.5s infinite;
+}
 
-        /* Form Controls */
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+@keyframes pulse{
+    50%{opacity:.35;transform:scale(.7)}
+}
 
-        @media(max-width: 650px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+/* =========================
+   HERO
+========================= */
 
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:110px 20px 70px;
+    position:relative;
+}
 
-        label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+.hero-content{
+    width:min(900px,100%);
+    animation:heroIn 1.2s ease both;
+}
 
-        select, input {
-            background: rgba(10, 10, 18, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 14px 16px;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-        select:focus, input:focus {
-            border-color: var(--primary-turq);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
-        }
+.tag{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 15px;
+    border:1px solid rgba(255,23,56,.25);
+    border-radius:100px;
+    background:rgba(255,0,40,.05);
+    color:#ff6b7f;
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:25px;
+}
 
-        /* Calculate Button */
-        .btn-calculate {
-            width: 100%;
-            margin-top: 25px;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-purple));
-            color: #fff;
-            border: none;
-            border-radius: 14px;
-            padding: 16px;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(255, 30, 66, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+.hero h1{
+    font-size:clamp(70px,15vw,150px);
+    line-height:.85;
+    letter-spacing:-7px;
+    font-weight:900;
+    text-shadow:
+        0 0 25px rgba(255,0,40,.18),
+        0 0 70px rgba(255,0,40,.08);
+}
 
-        .btn-calculate:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(255, 30, 66, 0.5);
-        }
+.hero h1 span{
+    color:#ff1738;
+}
 
-        .btn-calculate:active {
-            transform: translateY(0);
-        }
+.hero-sub{
+    margin:30px auto 0;
+    max-width:560px;
+    color:#8d8d8d;
+    line-height:1.7;
+    font-size:14px;
+}
 
-        /* Results Panel */
-        .results-container {
-            display: none;
-            animation: fadeIn 0.5s ease forwards;
-        }
+.hero-buttons{
+    margin-top:38px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.btn{
+    border:0;
+    cursor:pointer;
+    color:white;
+    font-weight:800;
+    letter-spacing:1px;
+    border-radius:10px;
+    padding:16px 27px;
+    transition:.25s;
+}
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
+.btn-main{
+    background:linear-gradient(135deg,#ff1738,#c90027);
+    box-shadow:0 0 30px rgba(255,0,40,.22);
+}
 
-        @media(max-width: 700px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+.btn-main:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 45px rgba(255,0,40,.42);
+}
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
+.btn-dark{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+}
 
-        .stat-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 242, 254, 0.3);
-        }
+.btn-dark:hover{
+    border-color:rgba(255,23,56,.45);
+}
 
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-turq), var(--primary-purple));
-        }
+/* =========================
+   GENERATOR
+========================= */
 
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
+.generator{
+    width:min(1050px,92%);
+    margin:0 auto 100px;
+}
 
-        .stat-value {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
 
-        /* Extra Config Info */
-        .meta-box {
-            background: rgba(0, 242, 254, 0.05);
-            border: 1px solid rgba(0, 242, 254, 0.15);
-            border-radius: 14px;
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-        }
+.section-title small{
+    color:#ff3652;
+    letter-spacing:3px;
+    font-size:10px;
+}
 
-        .meta-info span {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+.section-title h2{
+    margin-top:10px;
+    font-size:35px;
+}
 
-        .meta-info strong {
-            font-size: 1rem;
-            color: var(--primary-turq);
-        }
+.generator-card{
+    padding:30px;
+    background:rgba(8,8,10,.82);
+    border:1px solid var(--border);
+    border-radius:22px;
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.5),
+        inset 0 0 50px rgba(255,0,40,.025);
+    backdrop-filter:blur(18px);
+}
 
-        .btn-copy {
-            background: rgba(0, 242, 254, 0.15);
-            border: 1px solid var(--primary-turq);
-            color: var(--primary-turq);
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
 
-        .btn-copy:hover {
-            background: var(--primary-turq);
-            color: #05050a;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-        }
+.field label{
+    display:block;
+    margin-bottom:9px;
+    color:#aaa;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 40px;
-            letter-spacing: 1px;
-        }
-    </style>
+select,
+input{
+    width:100%;
+    height:53px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.08);
+    outline:none;
+    background:#0c0c0e;
+    color:white;
+    padding:0 15px;
+    font-size:14px;
+    transition:.2s;
+}
+
+select:focus,
+input:focus{
+    border-color:#ff1738;
+    box-shadow:0 0 20px rgba(255,0,40,.1);
+}
+
+.generate{
+    width:100%;
+    margin-top:20px;
+    height:58px;
+    font-size:14px;
+}
+
+/* =========================
+   ANALYSIS
+========================= */
+
+.analysis{
+    display:none;
+    text-align:center;
+    padding:55px 20px;
+}
+
+.analysis.active{
+    display:block;
+    animation:fade .5s ease;
+}
+
+.loader{
+    width:80px;
+    height:80px;
+    margin:0 auto 25px;
+    border-radius:50%;
+    border:2px solid rgba(255,23,56,.15);
+    border-top-color:#ff1738;
+    border-right-color:#ff1738;
+    animation:spin .8s linear infinite;
+    box-shadow:0 0 30px rgba(255,0,40,.15);
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.analysis h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.analysis p{
+    color:#777;
+    font-size:13px;
+}
+
+.analysis-line{
+    margin:25px auto 0;
+    width:min(400px,90%);
+    height:3px;
+    background:#151515;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.analysis-line span{
+    display:block;
+    width:0;
+    height:100%;
+    background:#ff1738;
+    box-shadow:0 0 15px #ff1738;
+    transition:width 3.2s linear;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+.results{
+    display:none;
+    margin-top:30px;
+}
+
+.results.active{
+    display:block;
+    animation:fade .8s ease;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.result-header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.result-header .mini{
+    color:#ff2948;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.result-header h2{
+    margin-top:8px;
+    font-size:30px;
+}
+
+.profile{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.sensi-card{
+    padding:22px;
+    background:rgba(10,10,12,.9);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;
+    position:relative;
+    overflow:hidden;
+}
+
+.sensi-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#ff1738,transparent);
+}
+
+.sensi-card small{
+    color:#777;
+    font-size:10px;
+    letter-spacing:1.5px;
+}
+
+.sensi-card strong{
+    display:block;
+    margin-top:8px;
+    font-size:38px;
+}
+
+.sensi-card strong::after{
+    content:"";
+    display:block;
+    width:30px;
+    height:2px;
+    margin-top:9px;
+    background:#ff1738;
+    box-shadow:0 0 10px #ff1738;
+}
+
+.profile-type{
+    margin-top:20px;
+    padding:16px;
+    text-align:center;
+    border-radius:12px;
+    border:1px solid rgba(255,23,56,.2);
+    background:rgba(255,0,40,.035);
+    color:#ff6b7f;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.reset{
+    display:block;
+    margin:20px auto 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:40px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.05);
+    color:#444;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .topbar{
+        padding:0 20px;
+    }
+
+    .status{
+        font-size:9px;
+    }
+
+    .hero h1{
+        letter-spacing:-4px;
+    }
+
+    .hero-sub{
+        font-size:13px;
+    }
+
+    .generator-card{
+        padding:18px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .profile{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .sensi-card{
+        padding:17px;
+    }
+
+    .sensi-card strong{
+        font-size:31px;
+    }
+}
+
+@media(max-width:420px){
+
+    .profile{
+        grid-template-columns:1fr;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Background Effects -->
-    <div class="mesh-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+<!-- NEON BACKGROUND -->
+<div class="network">
+    <canvas id="networkCanvas"></canvas>
+    <div class="red-glow one"></div>
+    <div class="red-glow two"></div>
+</div>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="logo">𝑾Á𝑹𝑺𝑯</div>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        SYSTEM ONLINE
     </div>
-    <div class="grid-overlay"></div>
+</header>
 
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <h1 class="logo-title">𝑾Á𝑹𝑺𝑯</h1>
-            <p class="subtitle">2026 Free Fire Meta Sensitivity & DPI Engine</p>
-        </header>
 
-        <!-- Input Card -->
-        <div class="glass-card">
-            <div class="section-title">
-                <i class="fa-solid fa-sliders"></i> Cihaz ve Donanım Parametreleri
-            </div>
-            
-            <div class="form-grid">
-                <div class="input-group">
-                    <label for="deviceBrand">Cihaz Markası / Modeli</label>
-                    <select id="deviceBrand">
-                        <option value="iphone">iPhone (iOS 19/20 Meta)</option>
-                        <option value="samsung">Samsung Galaxy (One UI 8)</option>
-                        <option value="xiaomi">Xiaomi / Redmi / POCO</option>
-                        <option value="realme">Realme & Oppo</option>
-                        <option value="other">Diğer Android Cihazlar</option>
-                    </select>
-                </div>
+<!-- HERO -->
+<section class="hero">
 
-                <div class="input-group">
-                    <label for="dpiValue">Ekran DPI Değeri</label>
-                    <input type="number" id="dpiValue" value="480" min="320" max="960" placeholder="Örn: 480, 540, 600">
-                </div>
-            </div>
+    <div class="hero-content">
 
-            <button class="btn-calculate" onclick="calculateSensitivity()">
-                <i class="fa-solid fa-bolt"></i> 2026 Meta Hassasiyet Hesapla
+        <div class="tag">
+            GARENA FREE FIRE • 2026
+        </div>
+
+        <h1>𝑾<span>Á</span>𝑹𝑺𝑯</h1>
+
+        <p class="hero-sub">
+            Cihazına ve oyun tarzına göre optimize edilmiş
+            Free Fire hassasiyet profili oluştur.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="btn btn-main"
+                    onclick="document.getElementById('generator').scrollIntoView()">
+                SİSTEME GİR
+            </button>
+
+            <button class="btn btn-dark"
+                    onclick="document.getElementById('generator').scrollIntoView()">
+                HASSASİYET OLUŞTUR
             </button>
         </div>
 
-        <!-- Results Card -->
-        <div class="glass-card results-container" id="resultsCard">
-            <div class="section-title">
-                <i class="fa-solid fa-crosshairs"></i> Optimize Edilmiş 𝑾Á𝑹𝑺𝑯 Değerleri
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Genel (General)</div>
-                    <div class="stat-value" id="resGeneral">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Kırmızı Nokta (Red Dot)</div>
-                    <div class="stat-value" id="resRedDot">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">2x / 4x Dürbün (Scope)</div>
-                    <div class="stat-value" id="resScope">0</div>
-                </div>
-            </div>
-
-            <div class="meta-box">
-                <div class="meta-info">
-                    <span>Önerilen 2026 Stabilizasyon Kodu</span>
-                    <strong id="metaCodeText">WARSH-2026-X480-OPT</strong>
-                </div>
-                <button class="btn-copy" onclick="copyConfigCode()">
-                    <i class="fa-regular fa-copy"></i> Kodu Kopyala
-                </button>
-            </div>
-        </div>
-
-        <footer>
-            𝑾Á𝑹𝑺𝑯 System &copy; 2026 | All Rights Reserved
-        </footer>
     </div>
 
-    <script>
-        function calculateSensitivity() {
-            const brand = document.getElementById('deviceBrand').value;
-            let dpi = parseInt(document.getElementById('dpiValue').value);
+</section>
 
-            if (isNaN(dpi) || dpi < 300) dpi = 480;
 
-            let baseGeneral = 90;
-            let baseRedDot = 88;
-            let baseScope = 85;
+<!-- GENERATOR -->
+<section class="generator" id="generator">
 
-            // Brand & DPI calculation logic for 2026 meta
-            if (brand === 'iphone') {
-                baseGeneral = Math.round(96 - (dpi / 120));
-                baseRedDot = Math.round(94 - (dpi / 130));
-                baseScope = Math.round(92 - (dpi / 140));
-            } else if (brand === 'samsung') {
-                baseGeneral = Math.round(98 - (dpi / 110));
-                baseRedDot = Math.round(95 - (dpi / 120));
-                baseScope = Math.round(90 - (dpi / 130));
-            } else if (brand === 'xiaomi') {
-                baseGeneral = Math.round(100 - (dpi / 100));
-                baseRedDot = Math.round(97 - (dpi / 110));
-                baseScope = Math.round(93 - (dpi / 120));
-            } else {
-                baseGeneral = Math.round(95 - (dpi / 115));
-                baseRedDot = Math.round(92 - (dpi / 125));
-                baseScope = Math.round(88 - (dpi / 135));
+    <div class="section-title">
+        <small>WARSH ENGINE</small>
+        <h2>Hassasiyetini Oluştur</h2>
+    </div>
+
+    <div class="generator-card">
+
+        <div class="grid">
+
+            <div class="field">
+                <label>Telefon Markası</label>
+
+                <select id="brand">
+                    <option value="">Marka seç</option>
+                    <option>Apple</option>
+                    <option>Samsung</option>
+                    <option>Xiaomi</option>
+                    <option>Redmi</option>
+                    <option>POCO</option>
+                    <option>Tecno</option>
+                    <option>Infinix</option>
+                    <option>OPPO</option>
+                    <option>vivo</option>
+                    <option>Huawei</option>
+                    <option>Diğer</option>
+                </select>
+            </div>
+
+
+            <div class="field">
+                <label>Telefon Modeli</label>
+
+                <input
+                    id="model"
+                    type="text"
+                    placeholder="Örn. iPhone 15 Pro">
+            </div>
+
+
+            <div class="field">
+                <label>FPS</label>
+
+                <select id="fps">
+                    <option value="60">60 FPS</option>
+                    <option value="90">90 FPS</option>
+                    <option value="120" selected>120 FPS</option>
+                </select>
+            </div>
+
+
+            <div class="field">
+                <label>Oyun Tarzı</label>
+
+                <select id="style">
+                    <option value="headshot">Headshot</option>
+                    <option value="rush">Rush</option>
+                    <option value="balanced">Balanced</option>
+                    <option value="precision">Precision</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <button class="btn btn-main generate" onclick="generateSensitivity()">
+            ⚡ HASSASİYET ÜRET
+        </button>
+
+
+        <!-- ANALYSIS -->
+        <div class="analysis" id="analysis">
+
+            <div class="loader"></div>
+
+            <h3 id="analysisText">
+                Cihaz analiz ediliyor...
+            </h3>
+
+            <p>
+                WARSH Engine hassasiyet profilini oluşturuyor
+            </p>
+
+            <div class="analysis-line">
+                <span id="progress"></span>
+            </div>
+
+        </div>
+
+
+        <!-- RESULTS -->
+        <div class="results" id="results">
+
+            <div class="result-header">
+
+                <div class="mini">
+                    WARSH PROFILE GENERATED
+                </div>
+
+                <h2>Hassasiyet Profilin</h2>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="sensi-card">
+                    <small>GENEL</small>
+                    <strong id="general">--</strong>
+                </div>
+
+                <div class="sensi-card">
+                    <small>RED DOT</small>
+                    <strong id="redDot">--</strong>
+                </div>
+
+                <div class="sensi-card">
+                    <small>2X SCOPE</small>
+                    <strong id="scope2">--</strong>
+                </div>
+
+                <div class="sensi-card">
+                    <small>4X SCOPE</small>
+                    <strong id="scope4">--</strong>
+                </div>
+
+                <div class="sensi-card">
+                    <small>SNIPER</small>
+                    <strong id="sniper">--</strong>
+                </div>
+
+                <div class="sensi-card">
+                    <small>FREE LOOK</small>
+                    <strong id="freeLook">--</strong>
+                </div>
+
+            </div>
+
+
+            <div class="profile-type">
+                HEADSHOT ODAKLI WARSH PROFİLİ
+            </div>
+
+
+            <button
+                class="btn btn-dark reset"
+                onclick="resetGenerator()">
+                YENİ PROFİL OLUŞTUR
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    𝑾Á𝑹𝑺𝑯 • FREE FIRE SENSITIVITY ENGINE • 2026
+</footer>
+
+
+<script>
+
+/* =====================================
+   ANIMATED NEON RED NETWORK
+===================================== */
+
+const canvas = document.getElementById("networkCanvas");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let width;
+let height;
+
+function resizeCanvas(){
+
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+
+    particles = [];
+
+    const count =
+        window.innerWidth < 600 ? 35 : 70;
+
+    for(let i=0;i<count;i++){
+
+        particles.push({
+
+            x:Math.random()*width,
+            y:Math.random()*height,
+
+            vx:(Math.random()-.5)*.35,
+            vy:(Math.random()-.5)*.35,
+
+            size:Math.random()*1.8+.5,
+
+            alpha:Math.random()*.7+.15
+
+        });
+
+    }
+}
+
+window.addEventListener("resize",resizeCanvas);
+
+resizeCanvas();
+
+
+function drawNetwork(){
+
+    ctx.clearRect(0,0,width,height);
+
+    for(const p of particles){
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if(p.x<0 || p.x>width)
+            p.vx *= -1;
+
+        if(p.y<0 || p.y>height)
+            p.vy *= -1;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+            `rgba(255,20,55,${p.alpha})`;
+
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = "#ff1738";
+
+        ctx.fill();
+    }
+
+
+    for(let i=0;i<particles.length;i++){
+
+        for(let j=i+1;j<particles.length;j++){
+
+            const a = particles[i];
+            const b = particles[j];
+
+            const dx = a.x-b.x;
+            const dy = a.y-b.y;
+
+            const distance =
+                Math.sqrt(dx*dx+dy*dy);
+
+            if(distance < 145){
+
+                const opacity =
+                    (1-distance/145)*.22;
+
+                ctx.beginPath();
+
+                ctx.moveTo(a.x,a.y);
+                ctx.lineTo(b.x,b.y);
+
+                ctx.strokeStyle =
+                    `rgba(255,20,55,${opacity})`;
+
+                ctx.lineWidth=.7;
+
+                ctx.shadowBlur=7;
+                ctx.shadowColor="#ff1738";
+
+                ctx.stroke();
             }
-
-            // Boundary clamping (Free Fire scale 0-100)
-            let general = Math.min(100, Math.max(75, baseGeneral));
-            let redDot = Math.min(100, Math.max(70, baseRedDot));
-            let scope = Math.min(100, Math.max(65, baseScope));
-
-            // Display results with animation feel
-            document.getElementById('resGeneral').innerText = general;
-            document.getElementById('resRedDot').innerText = redDot;
-            document.getElementById('resScope').innerText = scope;
-
-            const configCode = `WARSH-${brand.toUpperCase()}-DPI${dpi}-G${general}-R${redDot}-S${scope}`;
-            document.getElementById('metaCodeText').innerText = configCode;
-
-            const resultsCard = document.getElementById('resultsCard');
-            resultsCard.style.display = 'block';
-            resultsCard.scrollIntoView({ behavior: 'smooth' });
         }
+    }
 
-        function copyConfigCode() {
-            const codeText = document.getElementById('metaCodeText').innerText;
-            navigator.clipboard.writeText(codeText).then(() => {
-                const btn = document.querySelector('.btn-copy');
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Kopyalandı!';
-                btn.style.background = 'var(--primary-turq)';
-                btn.style.color = '#05050a';
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fa-regular fa-copy"></i> Kodu Kopyala';
-                    btn.style.background = 'rgba(0, 242, 254, 0.15)';
-                    btn.style.color = 'var(--primary-turq)';
-                }, 2000);
-            });
-        }
-    </script>
+    requestAnimationFrame(drawNetwork);
+}
+
+drawNetwork();
+
+
+/* =====================================
+   SENSITIVITY ENGINE
+===================================== */
+
+function randomRange(min,max){
+
+    return Math.floor(
+        Math.random()*(max-min+1)+min
+    );
+}
+
+
+function generateSensitivity(){
+
+    const brand =
+        document.getElementById("brand").value;
+
+    const model =
+        document.getElementById("model").value;
+
+    const style =
+        document.getElementById("style").value;
+
+    if(!brand){
+
+        alert("Lütfen telefon markasını seç.");
+
+        return;
+    }
+
+
+    if(!model.trim()){
+
+        alert("Lütfen telefon modelini yaz.");
+
+        return;
+    }
+
+
+    const analysis =
+        document.getElementById("analysis");
+
+    const results =
+        document.getElementById("results");
+
+    const progress =
+        document.getElementById("progress");
+
+    const text =
+        document.getElementById("analysisText");
+
+
+    results.classList.remove("active");
+
+    analysis.classList.add("active");
+
+    progress.style.width="0%";
+
+
+    setTimeout(()=>{
+        progress.style.width="100%";
+    },100);
+
+
+    const messages = [
+
+        "Cihaz analiz ediliyor...",
+
+        "Dokunmatik tepkisi ölçülüyor...",
+
+        "FPS profili değerlendiriliyor...",
+
+        "Aim profili oluşturuluyor...",
+
+        "WARSH Engine tamamlanıyor..."
+
+    ];
+
+
+    let index=0;
+
+    const messageInterval =
+        setInterval(()=>{
+
+            text.textContent =
+                messages[index];
+
+            index++;
+
+            if(index>=messages.length)
+                clearInterval(messageInterval);
+
+        },620);
+
+
+    setTimeout(()=>{
+
+        analysis.classList.remove("active");
+
+        createResult(style);
+
+        results.classList.add("active");
+
+        results.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },3500);
+
+}
+
+
+/* =====================================
+   RESULT GENERATOR
+===================================== */
+
+function createResult(style){
+
+    let general;
+    let redDot;
+    let scope2;
+    let scope4;
+    let sniper;
+    let freeLook;
+
+
+    if(style==="headshot"){
+
+        general=randomRange(165,180);
+        redDot=randomRange(160,178);
+        scope2=randomRange(150,170);
+        scope4=randomRange(135,158);
+        sniper=randomRange(95,125);
+        freeLook=randomRange(155,180);
+
+    }
+
+    else if(style==="rush"){
+
+        general=randomRange(170,180);
+        redDot=randomRange(165,180);
+        scope2=randomRange(155,175);
+        scope4=randomRange(140,160);
+        sniper=randomRange(90,115);
+        freeLook=randomRange(165,180);
+
+    }
+
+    else if(style==="precision"){
+
+        general=randomRange(145,165);
+        redDot=randomRange(145,165);
+        scope2=randomRange(135,155);
+        scope4=randomRange(125,145);
+        sniper=randomRange(100,125);
+        freeLook=randomRange(140,165);
+
+    }
+
+    else{
+
+        general=randomRange(155,175);
+        redDot=randomRange(150,170);
+        scope2=randomRange(140,160);
+        scope4=randomRange(130,150);
+        sniper=randomRange(95,120);
+        freeLook=randomRange(150,175);
+
+    }
+
+
+    document.getElementById("general").textContent=general;
+    document.getElementById("redDot").textContent=redDot;
+    document.getElementById("scope2").textContent=scope2;
+    document.getElementById("scope4").textContent=scope4;
+    document.getElementById("sniper").textContent=sniper;
+    document.getElementById("freeLook").textContent=freeLook;
+}
+
+
+/* =====================================
+   RESET
+===================================== */
+
+function resetGenerator(){
+
+    document.getElementById("results")
+        .classList.remove("active");
+
+    document.getElementById("generator")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+}
+
+</script>
+
 </body>
 </html>
